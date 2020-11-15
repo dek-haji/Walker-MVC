@@ -132,3 +132,4 @@ C:\Users\Dek\workspace\csharp\DogGO\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.Co
 C:\Users\Dek\workspace\csharp\DogGO\obj\Debug\netcoreapp3.1\DogGO.csproj.CoreCompileInputs.cache
 C:\Users\Dek\workspace\csharp\DogGO\obj\Debug\netcoreapp3.1\DogGO.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Dek\workspace\csharp\DogGO\obj\Debug\netcoreapp3.1\Razor\Views\Walkers\Index.cshtml.g.cs
+C:\Users\Dek\workspace\csharp\DogGO\obj\Debug\netcoreapp3.1\Razor\Views\Walkers\Details.cshtml.g.cs
