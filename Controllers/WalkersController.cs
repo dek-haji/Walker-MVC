@@ -2,32 +2,44 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DogGo.Repositories;
+using DogGO.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 
 namespace DogGO.Controllers
 {
     public class WalkersController : Controller
     {
-        // GET: WalkersController
-        public ActionResult Index()
+        private readonly WalkerRepository _walkerRepo;
+
+        // The constructor accepts an IConfiguration object as a parameter. This class comes from the ASP.NET framework and is useful for retrieving things out of the appsettings.json file like connection strings.
+        public WalkersController(IConfiguration config)
         {
-            return View();
+            _walkerRepo = new WalkerRepository(config);
         }
 
-        // GET: WalkersController/Details/5
+        // GET: Walkers
+        public ActionResult Index()
+        {
+            List<Walker> walkers = _walkerRepo.GetAllWalkers();
+            return View(walkers);
+        }
+
+        // GET: Walkers/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: WalkersController/Create
+        // GET: Walkers/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: WalkersController/Create
+        // POST: Walkers/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -42,13 +54,13 @@ namespace DogGO.Controllers
             }
         }
 
-        // GET: WalkersController/Edit/5
+        // GET: Walkers/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: WalkersController/Edit/5
+        // POST: Walkers/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -63,13 +75,13 @@ namespace DogGO.Controllers
             }
         }
 
-        // GET: WalkersController/Delete/5
+        // GET: Walkers/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: WalkersController/Delete/5
+        // POST: Walkers/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)

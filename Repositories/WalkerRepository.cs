@@ -22,14 +22,7 @@ namespace DogGo.Repositories
                 return new SqlConnection(_config.GetConnectionString("DefaultConnection"));
             }
         }
-        private readonly WalkerRepository _walkerRepo;
-
-        // The constructor accepts an IConfiguration object as a parameter. This class comes from the ASP.NET framework and is useful for retrieving things out of the appsettings.json file like connection strings.
-        public WalkersController(IConfiguration config)
-        {
-            _walkerRepo = new WalkerRepository(config);
-        }
-    
+      
     public List<Walker> GetAllWalkers()
         {
             using (SqlConnection conn = Connection)
