@@ -57,7 +57,7 @@ namespace DogGo.Repositories
                 }
             }
         }
-
+     
         public Walker GetWalkerById(int id)
         {
             using (SqlConnection conn = Connection)

@@ -30,12 +30,19 @@ namespace DogGO.Controllers
         // GET: Walkers/Details/5
         public ActionResult Details(int id)
         {
-            return View();
-        }
+            Walker walker = _walkerRepo.GetWalkerById(id);
+            Console.WriteLine(walker);
+            if (walker == null)
+            {
+                return NotFound();
+            }
 
+            return View(walker);
+        }
         // GET: Walkers/Create
         public ActionResult Create()
         {
+            
             return View();
         }
 
