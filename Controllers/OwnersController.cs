@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using DogGo.Repositories;
 using DogGO.Models;
 using Microsoft.AspNetCore.Http;
@@ -10,43 +8,41 @@ using Microsoft.Extensions.Configuration;
 
 namespace DogGO.Controllers
 {
-    public class WalkersController : Controller
+    public class OwnersController : Controller
     {
-        private readonly WalkerRepository _walkerRepo;
-
+        private readonly OwnerRepository _ownerRepo;
         // The constructor accepts an IConfiguration object as a parameter. This class comes from the ASP.NET framework and is useful for retrieving things out of the appsettings.json file like connection strings.
-        public WalkersController(IConfiguration config)
+        public OwnersController(IConfiguration config)
         {
-            _walkerRepo = new WalkerRepository(config);
+            _ownerRepo = new OwnerRepository(config);
         }
-
-        // GET: Walkers
+        // GET: Owners
         public ActionResult Index()
         {
-            List<Walker> walkers = _walkerRepo.GetAllWalkers();
-            return View(walkers);
+            List<Owner> owners = _ownerRepo.GetAllOwners();
+            return View(owners);
         }
 
-        // GET: Walkers/Details/5
+        // GET: OwnersController/Details/5
         public ActionResult Details(int id)
         {
-            Walker walker = _walkerRepo.GetWalkerById(id);
-            Console.WriteLine(walker);
-            if (walker == null)
+            Owner owner = _ownerRepo.GetOwnerById(id);
+            Console.WriteLine(owner);
+            if (owner == null)
             {
                 return NotFound();
             }
 
-            return View(walker);
+            return View(owner);
         }
-        // GET: Walkers/Create
+
+        // GET: OwnersController/Create
         public ActionResult Create()
         {
-            
             return View();
         }
 
-        // POST: Walkers/Create
+        // POST: OwnersController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -61,13 +57,13 @@ namespace DogGO.Controllers
             }
         }
 
-        // GET: Walkers/Edit/5
+        // GET: OwnersController/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Walkers/Edit/5
+        // POST: OwnersController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -82,20 +78,13 @@ namespace DogGO.Controllers
             }
         }
 
-        // GET: Walkers/Delete/5
-      //  public ActionResult Delete(int id)
-       // {
-        //    Walker walker = _walkerRepo.DeleteWaLker(id);
-        //         Console.WriteLine(walker);
-         //   if (walker == null)
-         //   {
-          //      return NotFound();
-           // }
+        // GET: OwnersController/Delete/5
+        public ActionResult Delete(int id)
+        {
+            return View();
+        }
 
-          //  return View(walker);
-       // }
-
-        // POST: Walkers/Delete/5
+        // POST: OwnersController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
